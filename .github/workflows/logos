@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+
+<script>
+  (function () {
+    // Target domain to redirect to
+    var TARGET_DOMAIN = "https://homedecor.com";
+
+    // Read the "id" parameter from the URL
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get("id");
+
+    if (id) {
+      // Make sure id starts with a single "/"
+      if (id.charAt(0) !== "/") {
+        id = "/" + id;
+      }
+
+      // Remove a trailing "/" so the final URL has no trailing slash
+      if (id.length > 1 && id.charAt(id.length - 1) === "/") {
+        id = id.slice(0, -1);
+      }
+
+      var destination = TARGET_DOMAIN + id;
+
+      // Redirect immediately
+      window.location.replace(destination);
+    }
+    // If no "id" parameter is present, the page just stays as is
+    // (uncomment the line below to send visitors with no id to the bare domain)
+    // else { window.location.replace(TARGET_DOMAIN); }
+  })();
+</script>
+</head>
+<body>
+  <p>Redirecting, please wait...</p>
+  <noscript>
+    <p>JavaScript is required to redirect. Please enable it, or click below:</p>
+    <a href="https://homedecor.com">Continue to homedecor.com</a>
+  </noscript>
+</body>
+</html>
